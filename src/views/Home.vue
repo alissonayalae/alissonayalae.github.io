@@ -1,4 +1,41 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
+
+// Crear instancia del router
+const router = useRouter()
+
+// Función que navega a /expotech
+function goToExpoTech() {
+  router.push('/expotech')
+}
+
+// Función que navega a /expodelogros
+function goToExpoDeLorgos() {
+  router.push('/expodelogros')
+}
+
+// Función que navega a /jovenesconvoz
+function goToJovenesConVoz() {
+  router.push('/jovenesconvoz')
+}
+
+// Funcion que navega a /hackathon
+function goToHackathon() {
+  router.push('/hackathon')
+}
+
+// Función para copiar texto al pp
+function copyText(text: string) {
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      alert('Texto copiado al portapapeles')
+    })
+    .catch((err) => {
+      console.error('Error al copiar: ', err)
+    })
+}
+</script>
 
 <template>
   <div class="image-container w-full bg-black">
@@ -8,7 +45,10 @@
       class="w-full h-auto object-cover rounded-lg"
     />
 
-    <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+    <div
+      id="about me"
+      class="absolute inset-0 flex flex-col items-center justify-center text-center"
+    >
       <p class="font-semibold text-white text-7xl drop-shadow-lg">Hello! I am</p>
       <p class="text-7xl font-extrabold tracking-[0.03em] text-landaVERDE drop-shadow-md mt-2">
         Alisson Ayala
@@ -19,10 +59,12 @@
         contributing innovative and impactful projects that combine creativity, purpose, and
         functionality.
       </p>
-      <img class="w-15 mt-25" src="@/images/Arrow.png" alt="Arrow icon" />
+      <a href="#projects">
+        <img class="w-15 mt-25 hover:animate-bounce" src="@/images/Arrow.png" alt="Arrow icon" />
+      </a>
     </div>
 
-    <div class="bg-black flex justify-center gap-4 mt-50">
+    <div id="projects" class="pt-[100px] bg-black flex justify-center gap-4 mt-50">
       <p class="font-Asemibold font-semibold text-6xl text-white">Featured</p>
       <p class="font-Asemibold font-semibold text-6xl text-landaVERDE">projects</p>
     </div>
@@ -47,8 +89,10 @@
           <h3 class="text-3xl text-greenmint font-semibold">TrackMate</h3>
 
           <div
-            class="relative mt-8 w-[600px] bg-darkgreen/60 rounded-lg p-7 text-white text-[14px] leading-relaxed font-regular shadow-xl backdrop-blur-md"
+            class="relative mt-8 w-[600px] bg-darkgreen/60 rounded-lg p-7 text-white text-[14px] leading-relaxed font-regular shadow-xl backdrop-blur-md z-10"
             style="box-shadow: inset 0 0 40px rgba(58, 255, 130, 0.1)"
+            data-aos="fade-right"
+            data-aos-duration="500"
           >
             The event gathered students from all ¡Supérate! Centers to showcase innovative tech
             projects with a business focus. My team presented
@@ -66,7 +110,10 @@
           <img
             src="@/images/TM mockup.png"
             alt="TrackMate mockup"
-            class="w-[500px] rounded-lg shadow-2xl border-t-40 border-l-40 border-verdechuco"
+            class="w-[500px] rounded-lg shadow-2xl border-t-40 border-l-40 border-verdechuco cursor-pointer"
+            @click="goToExpoTech"
+            data-aos="fade-left"
+            data-aos-duration="500"
           />
         </div>
       </div>
@@ -82,7 +129,10 @@
         <img
           src="@/images/TM mockup expo delogros.png"
           alt="TrackMate mockup"
-          class="w-[500px] rounded-lg shadow-2xl border-t-40 border-l-40 border-verdechuco"
+          class="w-[500px] rounded-lg shadow-2xl border-t-40 border-l-40 border-verdechuco cursor-pointer"
+          @click="goToExpoDeLorgos"
+          data-aos="fade-right"
+          data-aos-duration="500"
         />
 
         <div class="flex flex-col items-end max-w-md">
@@ -93,6 +143,8 @@
           <div
             class="relative mt-8 w-[600px] bg-darkgreen/60 rounded-lg p-7 text-white text-[14px] leading-relaxed font-regular shadow-xl backdrop-blur-md"
             style="box-shadow: inset 0 0 40px rgba(58, 255, 130, 0.1)"
+            data-aos="fade-left"
+            data-aos-duration="500"
           >
             The EXPO de Logros of Centro ¡Supérate! Fundación Poma is an annual event where students
             showcase the knowledge and skills gained throughout the program. It serves as a platform
@@ -124,8 +176,10 @@
           <h3 class="text-3xl text-greenmint font-semibold">TrackMate</h3>
 
           <div
-            class="relative mt-8 w-[600px] bg-darkgreen/60 rounded-lg p-7 text-white text-[14px] leading-relaxed font-regular shadow-xl backdrop-blur-md"
+            class="relative mt-8 w-[600px] bg-darkgreen/60 rounded-lg p-7 text-white text-[14px] leading-relaxed font-regular shadow-xl backdrop-blur-md z-10"
             style="box-shadow: inset 0 0 40px rgba(58, 255, 130, 0.1)"
+            data-aos="fade-right"
+            data-aos-duration="500"
           >
             This project aimed to turn challenges within schools into opportunities for improvement
             in the educational community. I participated in Rincón Renueva, where we revitalized an
@@ -143,7 +197,10 @@
           <img
             src="@/images/2. Rincon Renueva.pptx.png"
             alt="TrackMate mockup"
-            class="w-[500px] rounded-lg shadow-2xl border-t-40 border-l-40 border-verdechuco"
+            class="w-[500px] rounded-lg shadow-2xl border-t-40 border-l-40 border-verdechuco cursor-pointer"
+            @click="goToJovenesConVoz"
+            data-aos="fade-left"
+            data-aos-duration="500"
           />
         </div>
       </div>
@@ -159,7 +216,10 @@
         <img
           src="@/images/ECO-SCRAP.png"
           alt="TrackMate mockup"
-          class="w-[500px] rounded-lg shadow-2xl border-t-40 border-l-40 border-verdechuco"
+          class="w-[500px] rounded-lg shadow-2xl border-t-40 border-l-40 border-verdechuco cursor-pointer"
+          @click="goToHackathon"
+          data-aos="fade-right"
+          data-aos-duration="500"
         />
 
         <div class="flex flex-col items-end max-w-md">
@@ -170,6 +230,8 @@
           <div
             class="relative mt-8 w-[600px] bg-darkgreen/60 rounded-lg p-7 text-white text-[14px] leading-relaxed font-regular shadow-xl backdrop-blur-md"
             style="box-shadow: inset 0 0 40px rgba(58, 255, 130, 0.1)"
+            data-aos="fade-left"
+            data-aos-duration="500"
           >
             The ¡Supérate! Hackathon brought together first-year students to develop technological
             projects using Microsoft Power Apps. My team created Eco Scrapt, a digital directory
@@ -185,8 +247,8 @@
       </div>
     </section>
 
-    <section class="bg-black">
-      <div class="bg-black mt-50 text-center flex flex-col items-center justify-center">
+    <section id="certifications" class="bg-black">
+      <div class="bg-black pt-[100px] mt-50 text-center flex flex-col items-center justify-center">
         <p class="font-Asemibold font-semibold text-6xl text-white">Certifications</p>
         <img class="w-60 mt-9" src="@/images/Line 1.png" alt="Decorative line" />
         <p class="text-white max-w-6/10 mt-3">
@@ -198,7 +260,11 @@
         </p>
       </div>
 
-      <section class="bg-black flex justify-center items-center mt-20">
+      <section
+        class="bg-black flex justify-center items-center mt-20"
+        data-aos="fade-right"
+        data-aos-duration="500"
+      >
         <div class="relative w-[1050px]">
           <img src="@/images/rectangle11.png" alt="Background" class="w-full h-full object-cover" />
           <div class="absolute inset-0 flex items-center gap-6 px-10">
@@ -220,7 +286,11 @@
         </div>
       </section>
 
-      <section class="bg-black flex justify-center items-center mt-7">
+      <section
+        class="bg-black flex justify-center items-center mt-7"
+        data-aos="fade-right"
+        data-aos-duration="500"
+      >
         <div class="relative w-[1050px]">
           <img src="@/images/rectangle12.png" alt="Background" class="w-full h-full object-cover" />
           <div class="absolute inset-0 flex items-center gap-6 px-10">
@@ -239,7 +309,11 @@
         </div>
       </section>
 
-      <section class="bg-black flex justify-center items-center mt-7">
+      <section
+        class="bg-black flex justify-center items-center mt-7"
+        data-aos="fade-right"
+        data-aos-duration="500"
+      >
         <div class="relative w-[1050px]">
           <img src="@/images/rectangle13.png" alt="Background" class="w-full h-full object-cover" />
           <div class="absolute inset-0 flex items-center gap-6 px-10">
@@ -257,96 +331,148 @@
         </div>
       </section>
 
-      <section class="min-h-40">
-        <div class="bg-black flex justify-center gap-4 mt-50">
+      <section id="volunteering" class="min-h-40">
+        <div class="bg-black flex justify-center gap-4 mt-50 pt-[100px]">
           <p class="font-Asemibold font-semibold text-6xl text-white">Volunteering</p>
           <p class="font-Asemibold font-semibold text-6xl text-landaVERDE">work</p>
         </div>
 
-        <div class="flex justify-center items-center mt-9 bg-black">
+        <div class="flex justify-center items-center mt-9 mb-12 bg-black">
           <img class="w-60" src="@/images/Line 1.png" alt="Decorative line" />
         </div>
       </section>
     </section>
 
     <section class="min-h-150 bg-black flex items-center justify-center">
-  <div class="grid grid-cols-2 gap-6 mx-40">
-
-    <div
-      class="w-[595px] h-[275px] rounded-lg p-7 text-white text-[14px] leading-relaxed font-regular shadow-xl backdrop-blur-md flex items-center justify-center"
-      style="color: #FFFFFF; background: linear-gradient(257deg, rgba(1,30,10,1) 0%, rgba(1,120,75,0.4) 39%, rgba(22,241,136,0.5) 100%);">
-      
-      <div class="text-left max-w-9/10">
-        <p class="font-semibold mb-2 text-[15px]">Annual Fundraising<br>TECHO El Salvador</p>
-        <p>
-          I participated in a fundraising campaign to support the construction of emergency housing 
-          for people living in poverty as part of TECHO El Salvador’s annual collection. This experience 
-          allowed me to contribute to improving living conditions for vulnerable families, raise awareness 
-          about social issues, and develop skills in teamwork, organization, and community engagement 
-          while supporting a meaningful cause.
-        </p>
-      </div>
-    </div>
-
-    <div>
-      <img src="@/images/TECHO.png" alt="" class="w-[550px] h-[275px] object-cover rounded-lg">
-    </div>
-
-    <div>
-      <img src="@/images/Glasswinng.png" alt="" class="w-[595px] h-[275px] object-cover rounded-lg">
-    </div>
-
-    <div
-      class="w-[550px] h-[275px] rounded-lg text-white text-[14px] leading-relaxed font-regular shadow-xl backdrop-blur-md flex items-center justify-center"
-      style="color: #FFFFFF; background: linear-gradient(257deg, rgba(1,30,10,1) 0%, rgba(1,120,75,0.4) 39%, rgba(22,241,136,0.5) 100%);">
-      
-      <div class="p-7 text-left  max-w-9/10">
-        <p class="font-bold mb-2 text-[15px]">“Voluntariado que suma”<br>Glasswing International</p>
-        <p>
-          I volunteer with Glasswing International by supporting elementary school children with their 
-          homework and overall academic development through a school club. In this role, I help 
-          them strengthen their understanding of different subjects, encourage positive study habits, and build 
-          confidence in their abilities. This experience has allowed me to contribute to their growth while also 
-          developing my own skills in communication, leadership, and teamwork.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <section class="min-h-100 bg-black flex flex-col items-center justify-center text-center text-white">
-    
-    <div class="bg-black flex justify-center gap-4 mt-50">
-            <p class="font-Asemibold font-semibold text-6xl text-white">Get in</p>
-            <p class="font-Asemibold font-semibold text-6xl text-landaVERDE">touch</p>
+      <div class="grid grid-cols-2 gap-6 mx-40">
+        <div
+          data-aos="fade-right"
+          data-aos-duration="500"
+          class="w-[595px] h-[275px] rounded-lg p-7 text-white text-[14px] leading-relaxed font-regular shadow-xl backdrop-blur-md flex items-center justify-center"
+          style="
+            color: #ffffff;
+            background: linear-gradient(
+              257deg,
+              rgba(1, 30, 10, 1) 0%,
+              rgba(1, 120, 75, 0.4) 39%,
+              rgba(22, 241, 136, 0.5) 100%
+            );
+          "
+        >
+          <div class="text-left max-w-9/10">
+            <p class="font-semibold mb-2 text-[15px]">Annual Fundraising<br />TECHO El Salvador</p>
+            <p>
+              I participated in a fundraising campaign to support the construction of emergency
+              housing for people living in poverty as part of TECHO El Salvador’s annual collection.
+              This experience allowed me to contribute to improving living conditions for vulnerable
+              families, raise awareness about social issues, and develop skills in teamwork,
+              organization, and community engagement while supporting a meaningful cause.
+            </p>
           </div>
+        </div>
 
-          <div class="flex justify-center items-center mt-9 bg-black">
-            <img class="w-60" src="@/images/Line 1.png" alt="Decorative line" />
+        <div data-aos="fade-left" data-aos-duration="500">
+          <img
+            src="@/images/TECHO.png"
+            alt=""
+            class="w-[550px] h-[275px] object-cover rounded-lg"
+          />
+        </div>
+
+        <div data-aos="fade-right" data-aos-duration="500">
+          <img
+            src="@/images/Glasswinng.png"
+            alt=""
+            class="w-[595px] h-[275px] object-cover rounded-lg"
+          />
+        </div>
+
+        <div
+          data-aos="fade-left"
+          data-aos-duration="500"
+          class="w-[550px] h-[275px] rounded-lg text-white text-[14px] leading-relaxed font-regular shadow-xl backdrop-blur-md flex items-center justify-center"
+          style="
+            color: #ffffff;
+            background: linear-gradient(
+              257deg,
+              rgba(1, 30, 10, 1) 0%,
+              rgba(1, 120, 75, 0.4) 39%,
+              rgba(22, 241, 136, 0.5) 100%
+            );
+          "
+        >
+          <div class="p-7 text-left max-w-9/10">
+            <p class="font-bold mb-2 text-[15px]">
+              “Voluntariado que suma”<br />Glasswing International
+            </p>
+            <p>
+              I volunteer with Glasswing International by supporting elementary school children with
+              their homework and overall academic development through a school club. In this role, I
+              help them strengthen their understanding of different subjects, encourage positive
+              study habits, and build confidence in their abilities. This experience has allowed me
+              to contribute to their growth while also developing my own skills in communication,
+              leadership, and teamwork.
+            </p>
           </div>
+        </div>
+      </div>
+    </section>
 
-    <div
-      class="flex flex-col items-start gap-1 w-[420px] p-6 rounded-lg shadow-lg backdrop-blur-md mt-20 border-t-4 border-landaVERDE/60"
-      style="background: linear-gradient(257deg, rgba(1,30,10,1) 0%, rgba(1,120,75,0.4) 39%, rgba(22,241,136,0.5) 100%);"
+    <section
+      id="contact"
+      class="bg-black flex flex-col items-center justify-center text-center text-white"
     >
-      <div class="flex items-center gap-2">
-       <img src="@/images/Email.png" alt="" class="w-6 h-6">
-        <p class="font-medium">Email</p>
+      <div class="bg-black flex justify-center gap-4 mt-50">
+        <p class="font-Asemibold font-semibold text-6xl text-white">Get in</p>
+        <p class="font-Asemibold font-semibold text-6xl text-landaVERDE">touch</p>
       </div>
-      <p class="text-lg">alissonayala369@gmail.com</p>
-    </div>
 
-    <div class="flex gap-6 mt-10 mb-40">
-      <img src="@/images/Facebook.png" alt="" class="w-10 h-10">
+      <div class="flex justify-center items-center mt-9 bg-black">
+        <img class="w-60" src="@/images/Line 1.png" alt="Decorative line" />
+      </div>
 
-      <img src="@/images/Linkedin.png" alt="" class="w-10 h-10">
-    </div>
-  </section>
+      <div
+        class="flex flex-col items-start gap-1 w-[420px] p-6 rounded-lg shadow-lg backdrop-blur-md mt-20 border-t-4 border-landaVERDE/60"
+        style="
+          background: linear-gradient(
+            257deg,
+            rgba(1, 30, 10, 1) 0%,
+            rgba(1, 120, 75, 0.4) 39%,
+            rgba(22, 241, 136, 0.5) 100%
+          );
+        "
+      >
+        <div class="flex items-center gap-2">
+          <img src="@/images/Email.png" alt="" class="w-6 h-6" />
+          <p class="font-medium">Email</p>
+        </div>
+        <p
+          class="text-lg cursor-pointer transition-colors"
+          @click="copyText('alissonayala369@gmail.com')"
+        >
+          alissonayala369@gmail.com
+        </p>
+      </div>
 
+      <div class="flex gap-6 mt-10 mb-40">
+        <a
+          href="https://www.facebook.com/profile.php?id=61571085176223"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="@/images/Facebook.png" alt="" class="w-10 h-10" />
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/alisson-ayala-486a31367/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="@/images/Linkedin.png" alt="" class="w-10 h-10" />
+        </a>
+      </div>
+    </section>
   </div>
-
 </template>
-
-
 
 <style scoped></style>
